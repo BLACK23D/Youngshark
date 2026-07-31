@@ -1,0 +1,95 @@
+import type { Metadata } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
+import { siteConfig, siteUrl } from "@/lib/site";
+import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: siteUrl,
+  title: {
+    default: "YoungShark Technologies | Digital Enterprise Engineering",
+    template: "%s | YoungShark Technologies",
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [
+    "technology consultancy Nairobi",
+    "Android development Kenya",
+    "ERP solutions Kenya",
+    "Quickbase consultation",
+    "Workday integration",
+    "fullstack ecommerce development",
+    "YoungShark Technologies",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "YoungShark Technologies",
+    description: siteConfig.description,
+    type: "website",
+    locale: "en_KE",
+    siteName: siteConfig.name,
+    url: "/",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "YoungShark Technologies",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "YoungShark Technologies",
+    description: siteConfig.description,
+    images: ["/opengraph-image"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    telephone: siteConfig.phone,
+    image: new URL("/opengraph-image", siteConfig.url).toString(),
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Nairobi",
+      addressCountry: "KE",
+    },
+  };
+
+  return (
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+        {children}
+      </body>
+    </html>
+  );
+}

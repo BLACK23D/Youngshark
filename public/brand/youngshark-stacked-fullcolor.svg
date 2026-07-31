@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">YoungShark Technologies stacked logo</title>
+  <desc id="desc">A connected Y circuit mark with a subtle shark tail above the YoungShark Technologies wordmark.</desc>
+  <g transform="translate(237 86)">
+    <path d="M112 76 L213 177 L314 76" fill="none" stroke="#315BFF" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M213 177 L213 302" fill="none" stroke="#315BFF" stroke-width="24" stroke-linecap="round"/>
+    <path d="M213 177 L314 76" fill="none" stroke="#18CDB1" stroke-width="24" stroke-linecap="round"/>
+    <circle cx="102" cy="66" r="30" fill="#FFFFFF" stroke="#315BFF" stroke-width="20"/>
+    <circle cx="324" cy="66" r="30" fill="#FFFFFF" stroke="#18CDB1" stroke-width="20"/>
+    <circle cx="213" cy="312" r="30" fill="#FFFFFF" stroke="#071A2F" stroke-width="20"/>
+    <path d="M165 72 C181 74 197 84 213 101 C229 84 245 74 261 72 C252 101 236 121 213 135 C190 121 174 101 165 72Z" fill="#071A2F"/>
+  </g>
+  <g font-family="'Nimbus Sans','DejaVu Sans',sans-serif" text-anchor="middle">
+    <text x="450" y="600" fill="#071A2F" font-size="112" font-weight="700" letter-spacing="-4">YoungShark</text>
+    <text x="450" y="690" fill="#315BFF" font-size="60" font-weight="400" letter-spacing="5">Technologies</text>
+  </g>
+</svg>
