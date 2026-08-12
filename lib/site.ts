@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "YoungShark Technologies",
   shortName: "YoungShark",
   description:
-    "YoungShark Technologies engineers Android apps, fullstack commerce, ERP solutions, Quickbase workflows, and Workday integrations.",
+    "YoungShark Technologies is an AI-native digital engineering company combining software, product design, cloud and data to build intelligent products.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   location: "Nairobi, Kenya",
   phone: "+254706103000",
