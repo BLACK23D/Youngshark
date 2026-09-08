@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="YoungShark Technologies icon">
-  <path d="M126 122 L256 252 L386 122" fill="none" stroke="#315BFF" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M256 252 L256 394" fill="none" stroke="#315BFF" stroke-width="30" stroke-linecap="round"/>
-  <path d="M256 252 L386 122" fill="none" stroke="#18CDB1" stroke-width="30" stroke-linecap="round"/>
-  <circle cx="112" cy="108" r="38" fill="none" stroke="#315BFF" stroke-width="24"/>
-  <circle cx="400" cy="108" r="38" fill="none" stroke="#18CDB1" stroke-width="24"/>
-  <circle cx="256" cy="408" r="38" fill="none" stroke="#071A2F" stroke-width="24"/>
-  <path d="M194 112 C215 115 236 127 256 149 C276 127 297 115 318 112 C306 148 285 174 256 192 C227 174 206 148 194 112Z" fill="#071A2F"/>
-</svg>

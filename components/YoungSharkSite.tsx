@@ -24,7 +24,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TubesCursor } from "@/components/TubesCursor";
 import { siteConfig } from "@/lib/site";
 
@@ -134,10 +134,10 @@ function Brand() {
   return (
     <span className="ys2-brand">
       <Image
-        src="/brand/youngshark-icon-fullcolor.svg"
+        src="/assets/icon-full-color.png"
         alt=""
-        width={42}
-        height={42}
+        width={192}
+        height={187}
         priority
       />
       <span>
@@ -149,6 +149,23 @@ function Brand() {
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    firstMobileLinkRef.current?.focus();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
   return (
     <header className="ys2-nav-wrap">
       <nav className="ys2-nav" aria-label="Primary navigation">
@@ -166,6 +183,7 @@ function Navbar() {
           Start a conversation <ArrowRight size={16} />
         </a>
         <button
+          ref={menuButtonRef}
           type="button"
           className="ys2-menu-button"
           onClick={() => setOpen((v) => !v)}
@@ -181,12 +199,14 @@ function Navbar() {
           <motion.div
             id="mobile-navigation"
             className="ys2-mobile-nav"
+            aria-label="Mobile navigation"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
           >
-            {navLinks.map((link) => (
+            {navLinks.map((link, index) => (
               <a
+                ref={index === 0 ? firstMobileLinkRef : undefined}
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
@@ -216,7 +236,7 @@ function SectionIntro({
   return (
     <motion.div
       className="ys2-section-intro"
-      initial={{ opacity: 0, y: 22 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-8%" }}
     >
@@ -232,7 +252,7 @@ function Hero() {
     <section id="home" className="ys2-hero">
       <Image
         src="/images/youngshark-cinematic-ecosystem-hero.webp"
-        alt="Abstract interconnected technology ecosystem centred on a sculptural YoungShark monolith"
+        alt=""
         fill
         priority
         sizes="100vw"
@@ -244,7 +264,7 @@ function Hero() {
       <div className="ys2-shell ys2-hero-content">
         <motion.div
           className="ys2-hero-copy"
-          initial={{ opacity: 0, y: 26 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -312,7 +332,7 @@ function Capabilities() {
             <motion.article
               key={title}
               className="ys2-capability-card"
-              initial={{ opacity: 0, y: 24 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
@@ -340,11 +360,12 @@ function Solutions() {
           copy="Focused engagements designed around a business outcome, with the flexibility to connect into a larger transformation."
         />
         <div className="ys2-solution-grid">
-          {solutions.map(([name, text, Icon], index) => (
-            <motion.article
+          {solutions.map(([name, text, Icon]) => (
+            <motion.a
               key={name}
               className="ys2-solution-card"
-              initial={{ opacity: 0, x: index % 2 ? 18 : -18 }}
+              href="#contact"
+              initial={false}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
@@ -356,7 +377,7 @@ function Solutions() {
                 <p>{text}</p>
               </div>
               <ArrowRight className="ys2-solution-arrow" size={20} />
-            </motion.article>
+            </motion.a>
           ))}
         </div>
       </div>
@@ -378,7 +399,7 @@ function ProductConcepts() {
             <motion.article
               key={name}
               className="ys2-concept-card"
-              initial={{ opacity: 0, y: 28 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
@@ -419,6 +440,7 @@ function Africa() {
         </div>
         <div
           className="ys2-network-map"
+          role="img"
           aria-label="Illustration of Nairobi connected to global technology markets"
         >
           <span className="ys2-map-ring ring-a" />
@@ -574,12 +596,12 @@ function Footer() {
 
 export function YoungSharkSite() {
   return (
-    <main>
+    <>
       <a className="ys2-skip" href="#main-content">
         Skip to content
       </a>
       <Navbar />
-      <div id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <Credibility />
         <Capabilities />
@@ -589,8 +611,8 @@ export function YoungSharkSite() {
         <Labs />
         <Approach />
         <Contact />
-      </div>
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

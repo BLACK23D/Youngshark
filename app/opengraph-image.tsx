@@ -14,9 +14,9 @@ export default function OpenGraphImage() {
         height: "100%",
         alignItems: "center",
         overflow: "hidden",
-        color: "#f7fbfc",
+        color: "#FFFFFF",
         background:
-          "radial-gradient(circle at 80% 32%, #103d4a 0%, #091a2c 35%, #06111e 72%)",
+          "radial-gradient(circle at 80% 32%, #123f48 0%, #0b2940 35%, #071A2F 72%)",
         padding: "70px",
       }}
     >
@@ -28,7 +28,7 @@ export default function OpenGraphImage() {
           display: "flex",
           width: 410,
           height: 410,
-          border: "2px solid rgba(38,217,242,.3)",
+          border: "2px solid rgba(24,205,177,.3)",
           borderRadius: "50%",
         }}
       />
@@ -40,7 +40,7 @@ export default function OpenGraphImage() {
           display: "flex",
           width: 190,
           height: 190,
-          border: "2px solid rgba(38,217,242,.65)",
+          border: "2px solid rgba(24,205,177,.65)",
           borderRadius: "42% 58% 50% 50%",
           transform: "rotate(42deg)",
         }}
@@ -56,7 +56,7 @@ export default function OpenGraphImage() {
         <div
           style={{
             display: "flex",
-            color: "#a4f3ff",
+            color: "#18CDB1",
             fontSize: 20,
             fontWeight: 700,
             letterSpacing: 5,
